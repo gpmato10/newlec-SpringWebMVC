@@ -56,7 +56,14 @@ public class CustomerController {
     }
 
     @RequestMapping("/customer/noticeDetail.htm")
-    public String noticeDetail() {
+    public String noticeDetail(String seq, Model model) throws SQLException, ClassNotFoundException {
+
+        Notice notice = noticeDao.getNotice(seq);
+
+//        ModelAndView mv = new ModelAndView("noticeDetail.jsp");
+        model.addAttribute("notice", notice);
+
+
         return "noticeDetail.jsp";
     }
 }
