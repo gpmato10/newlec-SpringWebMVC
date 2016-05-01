@@ -114,7 +114,7 @@
 						<c:forEach var="n" items="${list}">
 							<tr>
 								<td class="seq">${n.seq}</td>
-								<td class="title"><a href="noticeDetail.jsp">${n.title}</a></td>
+								<td class="title"><a href="noticeDetail.htm?seq=${n.seq}">${n.title}</a></td>
 								<td class="writer">${n.writer}</td>
 								<td class="regdate">${n.regdate}</td>
 								<td class="hit">${n.hit}</td>

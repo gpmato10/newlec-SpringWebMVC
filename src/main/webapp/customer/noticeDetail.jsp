@@ -85,7 +85,7 @@
 								제목
 							</dt>
 							<dd class="article-detail-data">
-								제 12회 창업스쿨
+								${notice.title}
 							</dd>
 						</dl>
 						<dl class="article-detail-row">
@@ -93,7 +93,7 @@
 								작성일
 							</dt>
 							<dd class="article-detail-data">
-								2010-05-09
+								${notice.regdate}
 							</dd>
 						</dl>
 						<dl class="article-detail-row half-row">
@@ -101,7 +101,7 @@
 								작성자
 							</dt>
 							<dd class="article-detail-data half-data" >
-								뉴렉
+								${notice.writer}
 							</dd>
 						</dl>
 						<dl class="article-detail-row half-row">
@@ -109,7 +109,7 @@
 								조회수
 							</dt>
 							<dd class="article-detail-data half-data">
-								1235
+								${notice.hit}
 							</dd>
 						</dl>
 						<dl class="article-detail-row">
@@ -122,15 +122,13 @@
 						</dl>
 
 						<div class="article-content" >
-							<img src="http://sstatic.naver.net/keypage/outside/info/2011031017145546407.jpg" /><br />
-								동해물과 백두산이 마르고 닳도록
-
+							${notice.content}
 						</div>
 					</div>
 					<p class="article-comment margin-small">
-						<a class="btn-list button" href="notice.jsp">목록</a>						
-						<a class="btn-edit button" href="noticeEdit.jsp">수정</a>
-						<a class="btn-del button" href="noticeDel.jsp">삭제</a>
+						<a class="btn-list button" href="notice.htm">목록</a>
+						<a class="btn-edit button" href="noticeEdit.htm?seq=${notice.seq}">수정</a>
+						<a class="btn-del button" href="noticeDel.htm?seq=${notice.seq}">삭제</a>
 					</p>
 					<div class="margin-small" style="border-top: 1px solid #dfdfdf;">
 						<dl class="article-detail-row">

@@ -16,5 +16,10 @@
 		<property name="noticeDao" ref="noticeDao"/>
 	</bean>
 
-	
+	<bean name="/customer/noticeDetail.htm" class="controllers.customer.NoticeDetailController">
+
+		<property name="noticeDao" ref="noticeDao"/>
+	</bean>
+
+
 </beans>
