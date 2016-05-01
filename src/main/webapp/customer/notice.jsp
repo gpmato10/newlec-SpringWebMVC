@@ -66,7 +66,7 @@
 		<div id="main">
 			<div class="top-wrapper clear">
 				<div id="content">
-					<h2>공지사항:${test}</h2>
+					<h2>공지사항</h2>
 					<h3 class="hidden">방문페이지 로그</h3>
 					<ul id="breadscrumb" class="block_hlist clear">
 						<li>HOME</li>
@@ -113,7 +113,7 @@
 
 							<tr>
 								<td class="seq">1</td>
-								<td class="title"><a href="noticeDetail.jsp">강좌가 오픈될 예정입니다.</a></td>
+								<td class="title"><a href="noticeDetail.jsp">${list[0].title}</a></td>
 								<td class="writer">관리자</td>
 								<td class="regdate">2013-02-10</td>
 								<td class="hit">12</td>

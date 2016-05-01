@@ -1,10 +1,11 @@
 package controllers.customer;
 
+import dao.NoticeDao;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.Controller;
+import vo.Notice;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 
 /**
@@ -12,12 +13,15 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class NoticeController implements Controller {
 
-
     @Override
-    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+    public ModelAndView handleRequest(javax.servlet.http.HttpServletRequest httpServletRequest, javax.servlet.http.HttpServletResponse httpServletResponse) throws Exception {
+
+        NoticeDao dao = new NoticeDao();
+        List<Notice> list = dao.getNotices(1, "title", "%%");
+
 
         ModelAndView mv = new ModelAndView("notice.jsp");
-        mv.addObject("test", "hello");
+        mv.addObject("list", list);
 
         return mv;
     }
