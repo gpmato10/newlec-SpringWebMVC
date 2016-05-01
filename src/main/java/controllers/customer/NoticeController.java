@@ -15,6 +15,12 @@ import java.util.List;
  */
 public class NoticeController implements Controller {
 
+    private NoticeDao noticeDao;
+
+    public void setNoticeDao(NoticeDao noticeDao) {
+        this.noticeDao = noticeDao;
+    }
+
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
@@ -38,8 +44,8 @@ public class NoticeController implements Controller {
             query = _query;
         }
 
-        NoticeDao dao = new NoticeDao();
-        List<Notice> list = dao.getNotices(page, field, query);
+//        NoticeDao dao = new NoticeDao();
+        List<Notice> list = noticeDao.getNotices(page, field, query);
 
 
         ModelAndView mv = new ModelAndView("notice.jsp");
