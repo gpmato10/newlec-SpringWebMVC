@@ -1,5 +1,6 @@
 ﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -78,7 +79,7 @@
 						</li>
 					</ul>
 					<h3 class="hidden">공지사항 목록</h3>
-					<form id="content-searchform" class="article-search-form" action="notice.jsp" method="get">
+					<form id="content-searchform" class="article-search-form" action="notice.htm" method="get">
 						<fieldset>
 							<legend class="hidden">
 								목록 검색 폼
@@ -110,14 +111,15 @@
 							</tr>
 						</thead>
 						<tbody>
-
+						<c:forEach var="n" items="${list}">
 							<tr>
-								<td class="seq">1</td>
-								<td class="title"><a href="noticeDetail.jsp">${list[0].title}</a></td>
-								<td class="writer">관리자</td>
-								<td class="regdate">2013-02-10</td>
-								<td class="hit">12</td>
+								<td class="seq">${n.seq}</td>
+								<td class="title"><a href="noticeDetail.jsp">${n.title}</a></td>
+								<td class="writer">${n.writer}</td>
+								<td class="regdate">${n.regdate}</td>
+								<td class="hit">${n.hit}</td>
 							</tr>
+						</c:forEach>
 
 						</tbody>
 					</table>
@@ -139,16 +141,16 @@
 									<a class="strong" href="">1</a>
 								</li>
 								<li>
-									<a href="">2</a>
+									<a href="notice.htm?pg=2&f${param.f}=&q=${param.q}">2</a>
 								</li>
 								<li>
-									<a href="">3</a>
+									<a href="notice.htm?pg=2&f${param.f}=&q=${param.q}">3</a>
 								</li>
 								<li>
-									<a href="">4</a>
+									<a href="notice.htm?pg=2&f${param.f}=&q=${param.q}">4</a>
 								</li>
 								<li>
-									<a href="">5</a>
+									<a href="notice.htm?pg=2&f${param.f}=&q=${param.q}">5</a>
 								</li>
 							</ul>
 							<p id="btnNext">
