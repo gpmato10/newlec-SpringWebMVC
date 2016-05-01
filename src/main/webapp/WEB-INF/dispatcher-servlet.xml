@@ -7,19 +7,21 @@
 		http://www.springframework.org/schema/context
 		http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<context:component-scan base-package="controllers"/>
+
 	<bean id="noticeDao" class="dao.NoticeDao">
 
 	</bean>
 
-	<bean name="/customer/notice.htm" class="controllers.customer.NoticeController">
+	<!--<bean name="/customer/notice.htm" class="controllers.customer.NoticeController">-->
 
-		<property name="noticeDao" ref="noticeDao"/>
-	</bean>
+		<!--<property name="noticeDao" ref="noticeDao"/>-->
+	<!--</bean>-->
 
-	<bean name="/customer/noticeDetail.htm" class="controllers.customer.NoticeDetailController">
+	<!--<bean name="/customer/noticeDetail.htm" class="controllers.customer.NoticeDetailController">-->
 
-		<property name="noticeDao" ref="noticeDao"/>
-	</bean>
+		<!--<property name="noticeDao" ref="noticeDao"/>-->
+	<!--</bean>-->
 
 
 </beans>
