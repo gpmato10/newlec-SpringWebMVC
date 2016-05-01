@@ -66,7 +66,7 @@
 		<div id="main">
 			<div class="top-wrapper clear">
 				<div id="content">
-					<h2>공지사항</h2>
+					<h2>공지사항:${test}</h2>
 					<h3 class="hidden">방문페이지 로그</h3>
 					<ul id="breadscrumb" class="block_hlist clear">
 						<li>HOME</li>
