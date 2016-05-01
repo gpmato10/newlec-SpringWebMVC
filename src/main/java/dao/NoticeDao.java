@@ -156,7 +156,8 @@ public class NoticeDao {
 
 	public int insert(Notice n) throws ClassNotFoundException, SQLException {
 		// TODO Auto-generated method stub
-		String sql = "INSERT INTO NOTICES(SEQ, TITLE, CONTENT, WRITER, REGDATE, HIT, FILESRC) VALUES( (SELECT MAX(TO_NUMBER(SEQ))+1 FROM NOTICES), ?, ?, 'newlec', SYSDATE, 0, ?)";
+		String sql = "INSERT INTO NOTICES(TITLE, CONTENT, WRITER, HIT, FILESRC) \n" +
+				"VALUES(?, ?, 'newlec', HIT, ?)";
 		// 0. 드라이버 로드
 		Class.forName("com.mysql.jdbc.Driver");
 		// 1. 접속

@@ -124,7 +124,7 @@
 						</tbody>
 					</table>
 					<p class="article-comment margin-small">
-						<a class="btn-write button" href="noticeReg.jsp">글쓰기</a>
+						<a class="btn-write button" href="noticeReg.htm">글쓰기</a>
 					</p>
 					<p id="cur-page" class="margin-small">
 						<span class="strong">1</span> /

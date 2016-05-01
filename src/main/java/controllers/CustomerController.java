@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import vo.Notice;
 
@@ -65,5 +66,21 @@ public class CustomerController {
 
 
         return "noticeDetail.jsp";
+    }
+
+    @RequestMapping( value = "/customer/noticeReg.htm", method = RequestMethod.GET)
+    public String noticeReg() {
+        return "noticeReg.jsp";
+    }
+
+    @RequestMapping(value = "/customer/noticeReg.htm", method = RequestMethod.POST)
+    public String noticeReg(String title, String content) throws SQLException, ClassNotFoundException {
+        Notice n = new Notice();
+        n.setTitle(title);
+        n.setContent(content);
+
+        noticeDao.insert(n);
+
+        return "redirect:notice.htm";
     }
 }
