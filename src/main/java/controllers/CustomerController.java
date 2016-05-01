@@ -74,10 +74,10 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "/customer/noticeReg.htm", method = RequestMethod.POST)
-    public String noticeReg(String title, String content) throws SQLException, ClassNotFoundException {
-        Notice n = new Notice();
-        n.setTitle(title);
-        n.setContent(content);
+    public String noticeReg(Notice n /*String title, String content*/) throws SQLException, ClassNotFoundException {
+//        Notice n = new Notice();
+//        n.setTitle(title);
+//        n.setContent(content);
 
         noticeDao.insert(n);
 
