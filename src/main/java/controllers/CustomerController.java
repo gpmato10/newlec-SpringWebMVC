@@ -17,6 +17,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("/customer/*")
 public class CustomerController {
     private NoticeDao noticeDao;
 
@@ -25,7 +26,7 @@ public class CustomerController {
         this.noticeDao = noticeDao;
     }
 
-    @RequestMapping("/customer/notice.htm")
+    @RequestMapping("notice.htm")
     public String noticees(String pg, String f, String q, Model model) throws SQLException, ClassNotFoundException {
 
         //        넘겨받은 값 있을때 쓰는 값들.
@@ -56,7 +57,7 @@ public class CustomerController {
         return "notice.jsp";
     }
 
-    @RequestMapping("/customer/noticeDetail.htm")
+    @RequestMapping("noticeDetail.htm")
     public String noticeDetail(String seq, Model model) throws SQLException, ClassNotFoundException {
 
         Notice notice = noticeDao.getNotice(seq);
@@ -68,12 +69,12 @@ public class CustomerController {
         return "noticeDetail.jsp";
     }
 
-    @RequestMapping( value = "/customer/noticeReg.htm", method = RequestMethod.GET)
+    @RequestMapping( value = "noticeReg.htm", method = RequestMethod.GET)
     public String noticeReg() {
         return "noticeReg.jsp";
     }
 
-    @RequestMapping(value = "/customer/noticeReg.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "noticeReg.htm", method = RequestMethod.POST)
     public String noticeReg(Notice n /*String title, String content*/) throws SQLException, ClassNotFoundException {
 //        Notice n = new Notice();
 //        n.setTitle(title);
@@ -82,5 +83,24 @@ public class CustomerController {
         noticeDao.insert(n);
 
         return "redirect:notice.htm";
+    }
+
+    @RequestMapping (value = "noticeEdit.htm", method = RequestMethod.GET)
+    public String noticeEdit(String seq, Model model) throws SQLException, ClassNotFoundException {
+
+        Notice notice = noticeDao.getNotice(seq);
+        model.addAttribute("notice", notice);
+
+        return "noticeEdit.jsp";
+    }
+
+    @RequestMapping (value = "noticeEdit.htm", method = RequestMethod.POST)
+    public String noticeEdit(Notice n) throws SQLException, ClassNotFoundException {
+
+//        Notice notice = noticeDao.getNotice(seq);
+//        model.addAttribute("notice", notice);
+        noticeDao.update(n);
+
+        return "redirect:noticeDetail.htm?seq="+n.getSeq();
     }
 }

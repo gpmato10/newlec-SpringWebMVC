@@ -77,14 +77,14 @@
 							공지사항수정
 						</li>
 					</ul>
-					<form action="" method="post">
+					<form action="noticeEdit.htm" method="post">
 					<div id="notice-article-detail" class="article-detail margin-large" >						
 						<dl class="article-detail-row">
 							<dt class="article-detail-title">
 								제목
 							</dt>
 							<dd class="article-detail-data">
-								&nbsp;<input name="title" value="제 12회 창업스쿨 " />
+								&nbsp;<input name="title" value="${notice.title}" />
 							</dd>
 						</dl>	
 						<dl class="article-detail-row half-row">
@@ -92,7 +92,7 @@
 								작성자
 							</dt>
 							<dd class="article-detail-data half-data" >
-								뉴렉
+								${notice.writer}
 							</dd>
 						</dl>
 						<dl class="article-detail-row half-row">
@@ -100,7 +100,7 @@
 								조회수
 							</dt>
 							<dd class="article-detail-data half-data">
-								1235
+								${notice.hit}
 							</dd>
 						</dl>
 						<dl class="article-detail-row">
@@ -113,12 +113,13 @@
 						</dl>
 
 						<div class="article-content" >
-							<textarea id="txtContent" class="txtContent" name="content"><img src="http://sstatic.naver.net/keypage/outside/info/2011031017145546407.jpg" /><br />동해물과 백두산이 마르고 닳도록
+							<textarea id="txtContent" class="txtContent" name="content">${notice.content}
 							</textarea>
 						</div>						
 					</div>
 					<p class="article-comment margin-small">
-						<a class="btn-save button" href="noticeEditProc.jsp">수정</a>
+						<input type="hidden" name="seq" value="${notice.seq}">
+						<input type="submit" class="btn-save button" value="수정" />
 						<a class="btn-cancel button" href="noticeDetail.jsp">취소</a>						
 					</p>		
 					</form>					
