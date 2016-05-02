@@ -88,7 +88,7 @@ public class NoticeDao {
 	public int delete(String seq) throws ClassNotFoundException, SQLException
 	{
 		// 2. 데이터 베이스 연동을 위한 쿼리와 실행 코드 작성
-		String sql = "DELETE NOTICES WHERE SEQ=?";
+		String sql = "DELETE FROM NOTICES WHERE SEQ=?";
 		// 0. 드라이버 로드
 		Class.forName("com.mysql.jdbc.Driver");
 		// 1. 접속

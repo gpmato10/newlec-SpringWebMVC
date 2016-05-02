@@ -103,4 +103,11 @@ public class CustomerController {
 
         return "redirect:noticeDetail.htm?seq="+n.getSeq();
     }
+
+    @RequestMapping (value = "noticeDel.htm", method = RequestMethod.GET)
+    public String noticeDel(String seq) throws SQLException, ClassNotFoundException {
+        noticeDao.delete(seq);
+
+        return "redirect:notice.htm";
+    }
 }
