@@ -6,9 +6,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
 import vo.Notice;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -75,11 +78,22 @@ public class CustomerController {
     }
 
     @RequestMapping(value = "noticeReg.htm", method = RequestMethod.POST)
-    public String noticeReg(Notice n /*String title, String content*/) throws SQLException, ClassNotFoundException {
-//        Notice n = new Notice();
-//        n.setTitle(title);
-//        n.setContent(content);
+    public String noticeReg(Notice n, HttpServletRequest request /*String title, String content*/) throws SQLException, ClassNotFoundException, IOException {
 
+        String fname = n.getFile().getOriginalFilename();
+        String path = request.getServletContext().getRealPath("/customer/upload");  // '/customer/upload' 가 포함된 실제경로
+        String fpath = path + "/" + fname;
+
+        // if문 까지 코드는 '/customer/upload' 폴더가 없으면 생성하는 코드.
+        File file = new File(path);
+        if(file.exists() == false){
+            file.mkdirs();
+        }
+        FileOutputStream fs = new FileOutputStream(fpath);
+        fs.write(n.getFile().getBytes());
+        fs.close();
+
+        n.setFileSrc(fname);
         noticeDao.insert(n);
 
         return "redirect:notice.htm";

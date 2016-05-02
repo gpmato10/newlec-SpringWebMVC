@@ -1,5 +1,7 @@
 package vo;
 
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 import java.util.Date;
 
 public class Notice {
@@ -8,7 +10,16 @@ public class Notice {
 	private String writer;
 	private Date regdate;
 	private String fileSrc;
-	
+	private CommonsMultipartFile file;
+
+	public CommonsMultipartFile getFile() {
+		return file;
+	}
+
+	public void setFile(CommonsMultipartFile file) {
+		this.file = file;
+	}
+
 	public String getFileSrc() {
 		return fileSrc;
 	}
