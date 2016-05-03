@@ -117,11 +117,12 @@
 								첨부파일
 							</dt>
 							<dd class="article-detail-data">
-								<a href="">flag.png</a>
+								<a href="download.htm?p=customer/upload&f=${notice.fileSrc}">${notice.fileSrc}</a>
 							</dd>
 						</dl>
 
 						<div class="article-content" >
+							<img src="upload/${notice.fileSrc}">
 							${notice.content}
 						</div>
 					</div>

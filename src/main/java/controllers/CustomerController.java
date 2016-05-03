@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import vo.Notice;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -123,5 +124,43 @@ public class CustomerController {
         noticeDao.delete(seq);
 
         return "redirect:notice.htm";
+    }
+
+    @RequestMapping (value = "download.htm")
+    public void download(String p, String f, HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
+//        /*
+        System.out.println(p);
+        System.out.println(f);
+//        String fname = new String(f.getBytes("iso-8859-1"), "utf-8");
+        String fname = new String(f.getBytes("utf-8"), "utf-8");
+        System.out.println(fname);
+//        response.setHeader("Content-Disposition",
+//                "attachment;filename=" + new String(fname.getBytes(), "iso-8859-1"));
+        response.setHeader("Content-Disposition",
+                "attachment;filename=" + new String(fname.getBytes(), "utf-8"));
+        String rootPath = request.getServletContext().getRealPath("/");
+
+        String fullPath = rootPath + p + "/" + fname;
+//        ttt = ttt + "/" + fname;
+
+//        System.out.println(ttt);
+        System.out.println(fullPath);
+
+        FileInputStream fin = new FileInputStream(fullPath);
+//        FileInputStream fin = new FileInputStream(ttt);
+        ServletOutputStream sout = response.getOutputStream();
+
+        byte[] buf = new byte[1024];
+        int size = 0;
+
+        while ((size = fin.read(buf, 0, 1024)) != -1) {
+            sout.write(buf, 0, size);
+        }
+
+        fin.close();
+        sout.close();
+//        */
     }
 }
