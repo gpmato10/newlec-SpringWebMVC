@@ -3,6 +3,7 @@ package vo;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import java.util.Date;
+import java.util.List;
 
 public class Notice {
 	private String seq;
@@ -10,13 +11,13 @@ public class Notice {
 	private String writer;
 	private Date regdate;
 	private String fileSrc;
-	private CommonsMultipartFile file;
+	private List<CommonsMultipartFile> file;
 
-	public CommonsMultipartFile getFile() {
+	public List<CommonsMultipartFile> getFile() {
 		return file;
 	}
 
-	public void setFile(CommonsMultipartFile file) {
+	public void setFile(List<CommonsMultipartFile> file) {
 		this.file = file;
 	}
 

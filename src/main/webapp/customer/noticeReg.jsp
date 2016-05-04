@@ -93,7 +93,15 @@
 									첨부파일
 								</dt>
 								<dd class="article-detail-data">
-									&nbsp;<input type="file" id="txtFile" name="file" />
+									&nbsp;<input type="file" id="txtFile" name="file[0]" />
+								</dd>
+							</dl>
+							<dl class="article-detail-row">
+								<dt class="article-detail-title">
+									첨부파일
+								</dt>
+								<dd class="article-detail-data">
+									&nbsp;<input type="file" id="txtFile" name="file[1]" />
 								</dd>
 							</dl>
 	

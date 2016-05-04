@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import vo.Notice;
 
 import javax.servlet.ServletOutputStream;
@@ -81,20 +82,32 @@ public class CustomerController {
     @RequestMapping(value = "noticeReg.htm", method = RequestMethod.POST)
     public String noticeReg(Notice n, HttpServletRequest request /*String title, String content*/) throws SQLException, ClassNotFoundException, IOException {
 
-        String fname = n.getFile().getOriginalFilename();
-        String path = request.getServletContext().getRealPath("/customer/upload");  // '/customer/upload' 가 포함된 실제경로
-        String fpath = path + "/" + fname;
+        List<CommonsMultipartFile> files = n.getFile();
+        for (int i=0; i<files.size(); i++) {
+            if(!files.get(i).isEmpty()) {
+                String fname = files.get(i).getOriginalFilename();
+                String path = request.getServletContext().getRealPath("/customer/upload");  // '/customer/upload' 가 포함된 실제경로
+                String fpath = path + "/" + fname;
 
-        // if문 까지 코드는 '/customer/upload' 폴더가 없으면 생성하는 코드.
-        File file = new File(path);
-        if(file.exists() == false){
-            file.mkdirs();
+                // if문 까지 코드는 '/customer/upload' 폴더가 없으면 생성하는 코드.
+                File file = new File(path);
+                if(file.exists() == false){
+                    file.mkdirs();
+                }
+                FileOutputStream fs = new FileOutputStream(fpath);
+                fs.write(files.get(i).getBytes());
+                fs.close();
+
+
+                System.out.println(fname);
+                /*NoticeFile nf = new NoticeFile();
+                nf.setNoticeSeq(n.getSeq());
+                nf.setFileSrc(fname);
+                NoticeFileDao.insert(nf);
+                n.setFileSrc(fname); */
+            }
         }
-        FileOutputStream fs = new FileOutputStream(fpath);
-        fs.write(n.getFile().getBytes());
-        fs.close();
 
-        n.setFileSrc(fname);
         noticeDao.insert(n);
 
         return "redirect:notice.htm";

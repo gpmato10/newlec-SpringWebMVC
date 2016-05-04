@@ -53,7 +53,7 @@
 						<a href=""><img src="../images/menuMyPage.png" alt="마이페이지" /></a>
 					</li>
 					<li>
-						<a href="notice.jsp"><img src="../images/menuCustomer.png" alt="고객센터" /></a>
+						<a href="notice.htm"><img src="../images/menuCustomer.png" alt="고객센터" /></a>
 					</li>
 				</ul>
 			</div>
